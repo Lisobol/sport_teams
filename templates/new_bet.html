@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Add new{% endblock %}
+{% block userlog %}<p class="text-primary">User: <span class="glyphicon glyphicon-user "></span>{{ user.username }}</p>​{% endblock %}
+{% block content %}
+        <div class="jumbotron">
+            <div class="container">
+                <div class="col-md-8">
+                    <h3>Сделать ставку</h3>
+                    {% for err in errors.values %}
+                        <div class="alert alert-danger" >{{ err }}</div>
+                    {% endfor %}
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="exampleInputLogin1">СУММА</label>
+                            <input type="text" name="amount" class="form-control" id="exampleInputLogin1" placeholder="amount">
+                        </div>
+                        <button type="submit" class="btn btn-default btn-lg btn-block " >Готово</button>
+                        <a role="button" class="btn btn-default btn-lg btn-block" href="/items">Назад к списку</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+{% endblock %}

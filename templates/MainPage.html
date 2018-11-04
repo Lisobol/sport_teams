@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block userlog %}
+    {% if user.is_authenticated %}
+        <p class="text-primary">User: <span class="glyphicon glyphicon-user "></span>{{ user.username }}</p>
+    {% endif %}
+{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+    <div class="jumbotron">
+        <div class="container">
+            <div class="col-md-3">
+                <a  href="/items">Просмотр списка команд</a>
+            </div>
+        </div>
+    </div>
+{% else  %}
+       <div class="jumbotron">
+        <div class="container">
+            <div class="col-md-6">
+                <p>Для просмотра списка команд выполните вход</p>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}

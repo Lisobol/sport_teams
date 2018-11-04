@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% csrf_token %}
+{% block title %}Teams{% endblock %}
+{% block userlog %}<p class="text-primary">User: <span class="glyphicon glyphicon-user "></span>{{ user.username }}</p>​{% endblock %}
+{% block content %}
+
+
+    <div class="jumbotron">
+        <div class="container-fluid">
+            <div class="blog-header">
+                <h1  class="col-lg-offset-4">Список команд</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-9">
+                    {% include 'item.html' with item=item %}
+                </div>
+                <div class="col-md-offset-9">
+{#                        {% if user.is_superuser %}#}
+                            <a role="button" class="btn btn-default btn-lg btn-block"
+                                onClick='location.href="/new_item"'>Добавить команду</a>
+{#                        {% endif %}#}
+                </div>
+            </div>
+        </div>
+        <div class="pagination">
+            <span class="step-links">
+                {% if teams.has_previous %}
+                    <a href="?page={{ teams.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ teams.number }} of {{ teams.paginator.num_pages }}.
+                </span>
+                {% if teams.has_next %}
+                    <a href="?page={{ teams.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+{% endblock %}
+

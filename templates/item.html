@@ -1,0 +1,25 @@
+{% for item in teams %}
+    <section class="panel ">
+            <div class="panel-title">
+                <h2>
+                    <div class="title">
+                        <a href="/item/{{ item.TeamId }}/">{{  item.team_name}}</a>
+                    </div>
+                </h2>
+            </div>
+        <div class="panel-body ">
+            <div class="row">
+                <div class="col-lg-4">
+                    <img src=" {{item.picture.url}}">
+                </div>
+                <div class="col-lg-4">
+                    <h4>Вид спорта:{{ item.sport}}</h4>
+                    <h4>Количество игроков:{{ item.number_of_players }}</h4>
+                    <h4>Рейтинг:{{ item.rating }}</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+{% empty %}
+   ПУСТОЙ СПИСОК
+{% endfor %}
